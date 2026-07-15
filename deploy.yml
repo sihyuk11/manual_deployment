@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-v2
+  template:
+    metadata:
+      labels:
+        app: jenkins-v2
+    spec:
+      containers:
+      - name: jenkins-v2
+        image: sihyuk11/jenkins:v3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9987
