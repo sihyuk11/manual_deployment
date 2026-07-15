@@ -38,10 +38,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
+                    whoami
+                    echo $KUBECONFIG
+                    ls -l /etc/rancher/k3s/k3s.yaml
+                    kubectl config view
                     kubectl apply -f /DATA/jenkins/v3/deploy.yml &&
                     kubectl apply -f /DATA/jenkins/v3/svc.yml &&
                     kubectl rollout status deployment/jenkins-v3
-                    "
                 '''
             }
         }
