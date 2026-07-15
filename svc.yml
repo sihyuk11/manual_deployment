@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: jenkins-svc2
+  name: jenkins-svc3
 spec:
   type: NodePort
   selector:
-    app: jenkins-v2
+    app: jenkins-v3
   ports:
     - port: 9987
       targetPort: 9987

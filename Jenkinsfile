@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE = "sihyuk11/jenkins:v3"
+        IMAGE = "sihyuk11/jenkins:v4"
     }
 
     stages {
@@ -38,10 +38,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    ssh -o StrictHostKeyChecking=no root@192.168.75.91 "
-                    kubectl apply -f /DATA/jenkins/v2/deploy.yml &&
-                    kubectl apply -f /DATA/jenkins/v2/svc.yml &&
-                    kubectl rollout status deployment/jenkins-v2
+                    kubectl apply -f /DATA/jenkins/v3/deploy.yml &&
+                    kubectl apply -f /DATA/jenkins/v3/svc.yml &&
+                    kubectl rollout status deployment/jenkins-v3
                     "
                 '''
             }
